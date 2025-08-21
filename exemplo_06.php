@@ -2,19 +2,19 @@
 
 class Pessoa
 {
-	public $nome, $idade, $altura, $peso;
+	// public $nome, $idade, $altura, $peso;
 	protected $imc;
 
 	function __construct(
-		$nome,
-		$idade,
-		$altura = null,
-		$peso = null
+		public string $nome,
+		public int $idade,
+		protected float $peso = 0,
+		protected float $altura = 0,
 	) {
-		$this->nome = $nome;
-		$this->idade = $idade;
-		$this->altura = $altura;
-		$this->peso = $peso;
+		// $this->nome = $nome;
+		// $this->idade = $idade;
+		// $this->altura = $altura;
+		// $this->peso = $peso;
 	}
 
 	function __destruct()
@@ -27,6 +27,8 @@ class Pessoa
 		if (
 			!is_numeric($this->altura)
 			&& !is_numeric($this->peso)
+			|| $this->altura <= 0
+			|| $this->peso <= 0
 		) {
 			echo "\nIMC $this->nome: Erro, informe peso e altura corretamente.\n";
             return;//encerrou o metodo!!
@@ -44,7 +46,7 @@ class Funcionario extends Pessoa
 	function __construct($nome, $idade, $altura, $peso, $salario = 0)
 	{
 		//super
-		parent::__construct($nome, $idade, $altura, $peso);
+		parent::__construct($nome, $idade, $peso, $altura);
 		$this->salario = $salario;
 	}
 
@@ -73,12 +75,15 @@ class Professor extends Funcionario
 	public function areaAtuacao()
 	{
 		echo "\nAtua na área: " . $this->area;
-        echo "\n Seu imc é:".$this->imc;
+	}
+
+	public function verImc(){
+		   echo "\n O imc do Professor $this->nome é:".number_format($this->imc, 2);
 	}
 }
 
 $pessoaUm = new Pessoa("Joao", 35);
-$pessoaDois = new Pessoa("Lucia", 60, 1.55, 89);
+$pessoaDois = new Funcionario("Lucia", 60, 1.55, 89, 3000);
 
 
 $pessoaUm->calcImc();
@@ -88,6 +93,7 @@ $pessoaTres = new Professor('Gill', 35, 1.55, 89, 5000);
 $pessoaTres->calcImc(); //Pessoa
 $pessoaTres->verSalario(); //Funcionario
 $pessoaTres->areaAtuacao(); //Professor
+$pessoaTres->verImc(); //Professor
 
 
 
