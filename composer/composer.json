@@ -1,0 +1,15 @@
+{
+    "name": "otavio/composer",
+    "autoload": {
+        "psr-4": {
+            "Otavio\\Composer\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Otávio Fagundes",
+            "email": "otaviofariafagundes1@gmail.com"
+        }
+    ],
+    "require": {}
+}
