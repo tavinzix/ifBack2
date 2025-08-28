@@ -1,9 +1,15 @@
 <?php
+
 require "../vendor/autoload.php";
 
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-$dotenv->load();
+use Otavio\Composer\classes\Atleta;
 
-echo "<hr>";
+$atl1 = new Atleta("Luizito Soares", 36, 1.8, 80);
 
-var_dump($_ENV['SECRET_KEY']);
+echo "<hr>"; //---
+echo "<pre>";
+$atl1->showImc();
+
+var_dump($atl1);
+
+require "slugfy.php";

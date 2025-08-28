@@ -11,5 +11,7 @@
             "email": "otaviofariafagundes1@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "illuminate/support": "^12.26"
+    }
 }
