@@ -1,0 +1,16 @@
+{
+  "name": "otavio/trait",
+  "description": "teste",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "otavio\\trait\\src\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "robson"
+    }
+  ],
+  "require": {}
+}
