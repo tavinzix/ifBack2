@@ -23,7 +23,7 @@
         <tbody>
             @foreach ($listVendedores as $vendedores)
             <tr>
-                <td><a href="vendedores/{{ $vendedores->id }}">{{ $vendedores->id }}</a></td>
+                <td><a href="/vendedores/{{ $vendedores->id }}">{{ $vendedores->id }}</a></td>
                 <td>{{ $vendedores->nome_loja }}</td>
                 <td>{{ $vendedores->cnpj}}</td>
                 <td>{{ $vendedores->telefone }}</td>

@@ -9,17 +9,22 @@
 </head>
 
 <body>
-        <h1>{{ $produto->nome }}</h1>
-        <p>{{ $produto->descricao }}</p>
-        <ul>
-            <li>Categoria: {{ $produto->categoria_id }}</li>
-            <li>Marca: {{ $produto->marca }}</li>
-            <li>Peso: {{ $produto->peso}}</li>
-            <li>Atributos: {{ $produto->atributos}}</li>
-            <li>Dimensoes: {{ $produto->dimensoes}}</li>
-        </ul>
+    @if($produto)
+    <h1>{{ $produto->nome }}</h1>
+    <p>{{ $produto->descricao }}</p>
+    <ul>
+        <li>Categoria: {{ $produto->categoria_id }}</li>
+        <li>Marca: {{ $produto->marca }}</li>
+        <li>Peso: {{ $produto->peso}}</li>
+        <li>Atributos: {{ $produto->atributos}}</li>
+        <li>Dimensoes: {{ $produto->dimensoes}}</li>
+    </ul>
 
-        <a href="/produtos">Voltar</a>
+    <a href="/produtos">Voltar</a>
+    @else
+    <p>Produto não encontrado</p>
+    @endif
+
 </body>
 
 </html>

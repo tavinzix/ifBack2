@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    @if($vendedores)
     <h1>{{ $vendedores->nome_loja }}</h1>
     <p>{{ $vendedores->descricao}}</p>
     <ul>
@@ -19,6 +20,9 @@
     </ul>
 
     <a href="/vendedores">Voltar</a>
+    @else
+    <p>Vendedor não encontrado</p>
+    @endif
 </body>
 
 </html>

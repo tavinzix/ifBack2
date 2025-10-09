@@ -24,7 +24,7 @@
         <tbody>
             @foreach ($listProdutos as $produto)
             <tr>
-                <td><a href="produtos/{{ $produto->id }}">{{ $produto->id }}</a></td>
+                <td><a href="/produtos/{{ $produto->id }}">{{ $produto->id }}</a></td>
                 <td>{{ $produto->nome }}</td>
                 <td>{{ $produto->categoria_id }}</td>
                 <td>{{ $produto->marca }}</td>

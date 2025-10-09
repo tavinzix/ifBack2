@@ -9,14 +9,19 @@
 </head>
 
 <body>
-        <h1>{{ $user->nome_completo }}</h1>
-        <p>{{ $user->email }}</p>
-        <ul>
-            <li>CPF: {{ $user->cpf }}</li>
-            <li>Data de Nascimento: {{ $user->dt_nasc }}</li>
-        </ul>
+    @if($user)
 
-        <a href="/usuarios">Voltar</a>
+    <h1>{{ $user->nome_completo }}</h1>
+    <p>{{ $user->email }}</p>
+    <ul>
+        <li>CPF: {{ $user->cpf }}</li>
+        <li>Data de Nascimento: {{ $user->dt_nasc }}</li>
+    </ul>
+
+    <a href="/usuarios">Voltar</a>
+    @else
+    <p>Usuário não encontrado</p>
+    @endif
 </body>
 
 </html>

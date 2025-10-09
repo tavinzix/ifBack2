@@ -23,7 +23,7 @@
         <tbody>
             @foreach ($listUsers as $user)
             <tr>
-                <td><a href="usuarios/{{ $user->id }}">{{ $user->id }}</a></td>
+                <td><a href="/usuarios/{{ $user->id }}">{{ $user->id }}</a></td>
                 <td>{{ $user->nome_completo }}</td>
                 <td>{{ $user->cpf }}</td>
                 <td>{{ $user->telefone }}</td>
