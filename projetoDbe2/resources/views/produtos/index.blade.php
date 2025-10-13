@@ -19,6 +19,7 @@
                 <th>Categoria_id</th>
                 <th>Marca</th>
                 <th>Peso</th>
+                <th>Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -29,6 +30,8 @@
                 <td>{{ $produto->categoria_id }}</td>
                 <td>{{ $produto->marca }}</td>
                 <td>{{ $produto->peso }}</td>
+                <td><a href="{{route('delete', $produto->id)}}">Deletar</a></td>
+                <td> <a href="{{route('edit', $produto->id)}}">Atualizar</a></td>
             </tr>
             @endforeach
         </tbody>

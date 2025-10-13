@@ -18,6 +18,7 @@
                 <th>Nome</th>
                 <th>CNPJ</th>
                 <th>Telefone</th>
+                <th>Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -27,12 +28,14 @@
                 <td>{{ $vendedores->nome_loja }}</td>
                 <td>{{ $vendedores->cnpj}}</td>
                 <td>{{ $vendedores->telefone }}</td>
+                <td><a href="{{route('deleteVendedor', $vendedores->id)}}">Deletar</a></td>
+                <td> <a href="{{route('editVendedor', $vendedores->id)}}">Atualizar</a></td>
             </tr>
             @endforeach
         </tbody>
     </table>
     @else
-    <p>Usuarios não encontrados! </p>
+    <p>Vendedores não encontrados! </p>
     @endif
 </body>
 

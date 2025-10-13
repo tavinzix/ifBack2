@@ -18,6 +18,7 @@
                 <th>Nome</th>
                 <th>CPF</th>
                 <th>Telefone</th>
+                <th>Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -27,6 +28,8 @@
                 <td>{{ $user->nome_completo }}</td>
                 <td>{{ $user->cpf }}</td>
                 <td>{{ $user->telefone }}</td>
+                <td><a href="{{route('deleteUser', $user->id)}}">Deletar</a></td>
+                <td> <a href="{{route('editUser', $user->id)}}">Atualizar</a></td>
             </tr>
             @endforeach
         </tbody>

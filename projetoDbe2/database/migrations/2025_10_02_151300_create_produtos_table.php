@@ -20,8 +20,7 @@ return new class extends Migration
             $table->json('atributos');
             $table->decimal('peso', 10, 2);
             $table->json('dimensoes')->nullable();
-            $table->timestamp('data_criacao')->useCurrent();
-            $table->timestamp('data_atualizacao')->useCurrent();
+            $table->timestamps();
         });
     }
 

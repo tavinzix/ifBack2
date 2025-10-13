@@ -19,10 +19,8 @@ return new class extends Migration
             $table->string('senha');
             $table->string('telefone');
             $table->date('dt_nasc');
-            $table->timestamp('data_criacao')->useCurrent();
             $table->enum('status', ['1', '2', '3'])->default('1')->comment('1 = ativo, 2 = inativo, 3 = banido');
             $table->string('img_user', 250)->default('avatar.jpg');
-            $table->timestamp('data_atualizacao')->useCurrent()->useCurrentOnUpdate();
 
             $table->rememberToken();
             $table->timestamps();
