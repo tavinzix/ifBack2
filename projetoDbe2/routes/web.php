@@ -10,35 +10,40 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-Route::get('/produtos', [ProdutosController::class, 'index']);
-Route::get('/produtos/{id}', [ProdutosController::class, 'show']);
-
-Route::get('/produto', [ProdutosController::class, 'create']);
-Route::post('/produto', [ProdutosController::class, 'store']);
-Route::get('/produtos/{id}/edit', [ProdutosController::class, 'edit'])->name('edit');
-Route::post('/produtos/{id}/update', [ProdutosController::class, 'update'])->name('update');
-Route::get('/produtos/{id}/delete', [ProdutosController::class, 'delete'])->name('delete');
-Route::post('/produtos/{id}/delete', [ProdutosController::class, 'remove'])->name('remove');
-
-
-Route::get('/usuarios', [UsuariosController::class, 'index']);
-Route::get('/usuarios/{id}', [UsuariosController::class, 'show']);
-
-Route::get('/usuario', [UsuariosController::class, 'create']);
-Route::post('/usuario', [UsuariosController::class, 'store']);
-Route::get('/usuarios/{id}/edit', [UsuariosController::class, 'edit'])->name('editUser');;
-Route::post('/usuarios/{id}/update', [UsuariosController::class, 'update'])->name('updateUser');
-Route::get('/usuarios/{id}/delete', [UsuariosController::class, 'delete'])->name('deleteUser');
-Route::post('/usuarios/{id}/delete', [UsuariosController::class, 'remove'])->name('removeUser');
+Route::controller(ProdutosController::class)->group(function () {
+    Route::get('/produtos', 'index');
+    Route::get('/produtos/{id}', 'show');
+    Route::get('/produto', 'create');
+    Route::post('/produto', 'store');
+    Route::get('/produtos/{id}/edit', 'edit')->name('edit');
+    Route::post('/produtos/{id}/update', 'update')->name('update');
+    Route::get('/produtos/{id}/delete',  'delete')->name('delete');
+    Route::post('/produtos/{id}/delete', 'remove')->name('remove');
+});
 
 
-Route::get('/vendedores', [VendedoresController::class, 'index']);
-Route::get('/vendedores/{id}', [VendedoresController::class, 'show']);
+Route::controller(UsuariosController::class)->group(function () {
+    Route::get('/usuarios', 'index');
+    Route::get('/usuarios/{id}', 'show');
 
-Route::get('/vendedor', [VendedoresController::class, 'create']);
-Route::post('/vendedor', [VendedoresController::class, 'store']);
-Route::get('/vendedores/{id}/edit', [VendedoresController::class, 'edit'])->name('editVendedor');;
-Route::post('/vendedores/{id}/update', [VendedoresController::class, 'update'])->name('updateVendedor');
-Route::get('/vendedores/{id}/delete', [VendedoresController::class, 'delete'])->name('deleteVendedor');
-Route::post('/vendedores/{id}/delete', [VendedoresController::class, 'remove'])->name('removeVendedor');
+    Route::get('/usuario', 'create');
+    Route::post('/usuario', 'store');
+    Route::get('/usuarios/{id}/edit', 'edit')->name('editUser');;
+    Route::post('/usuarios/{id}/update', 'update')->name('updateUser');
+    Route::get('/usuarios/{id}/delete', 'delete')->name('deleteUser');
+    Route::post('/usuarios/{id}/delete', 'remove')->name('removeUser');
+});
+
+Route::resource('usuarios', UsuariosController::class);
+
+Route::controller(VendedoresController::class)->group(function () {
+    Route::get('/vendedores', 'index');
+    Route::get('/vendedores/{id}', 'show');
+
+    Route::get('/vendedor', 'create');
+    Route::post('/vendedor', 'store');
+    Route::get('/vendedores/{id}/edit', 'edit')->name('editVendedor');;
+    Route::post('/vendedores/{id}/update', 'update')->name('updateVendedor');
+    Route::get('/vendedores/{id}/delete', 'delete')->name('deleteVendedor');
+    Route::post('/vendedores/{id}/delete', 'remove')->name('removeVendedor');
+});

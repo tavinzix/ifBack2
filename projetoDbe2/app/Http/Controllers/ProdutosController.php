@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Produtos;
+use App\Models\Produto;
 use Illuminate\Http\Request;
 
 class ProdutosController extends Controller
 {
     public function index()
     {
-        $listProdutos = Produtos::all();
+        $listProdutos = Produto::all();
         return view('produtos.index', ["listProdutos" => $listProdutos]);
     }
 
     public function show($id)
     {
-        $produto = Produtos::find($id);
+        $produto = Produto::find($id);
         return view('produtos.dadosprod', ["produto" => $produto]);
     }
 
@@ -26,7 +26,7 @@ class ProdutosController extends Controller
 
     public function store(Request $request)
     {
-        $produto = new Produtos;
+        $produto = new Produto;
         $produto->nome = $request->nome;
         $produto->descricao = $request->descricao;
         $produto->categoria_id = $request->categoria_id;
@@ -43,14 +43,14 @@ class ProdutosController extends Controller
 
     public function edit($id)
     {
-        $data = ['produto' => Produtos::find($id)];
+        $data = ['produto' => Produto::find($id)];
         return view('produtos.produto_edit', $data);
     }
 
     public function update(Request $request, $id)
     {
         $updateProd = $request->all();
-        $produto = Produtos::find($id);
+        $produto = Produto::find($id);
 
         $produto->nome = $updateProd['nome'];
         $produto->descricao = $updateProd['descricao'];
@@ -68,12 +68,12 @@ class ProdutosController extends Controller
     }
 
     public function delete($id){
-        return view('produtos.remove', ['produto' => Produtos::find($id)]);
+        return view('produtos.remove', ['produto' => Produto::find($id)]);
     }
 
     public function remove(Request $request, $id){
         if ($request->has('confirmar')) {
-            if (!Produtos::destroy($id)) {
+            if (!Produto::destroy($id)) {
                 dd("Erro ao deletar o produto $id!");
             }
         }

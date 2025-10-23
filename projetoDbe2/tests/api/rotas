@@ -1,0 +1,71 @@
+{
+	"info": {
+		"_postman_id": "939a867a-5035-4e9e-a881-c306878c141f",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30725909",
+		"_collection_link": "https://planetary-shuttle-9939.postman.co/workspace/dbe2~0dfdf43e-9b08-4885-9b76-ee10e30ad1f1/collection/30725909-939a867a-5035-4e9e-a881-c306878c141f?action=share&source=collection_link&creator=30725909"
+	},
+	"item": [
+		{
+			"name": "vendedores",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{SERVER_ADDRESS}}:{{SERVER_PORT}}/api/vendedores/2",
+					"host": [
+						"{{SERVER_ADDRESS}}"
+					],
+					"port": "{{SERVER_PORT}}",
+					"path": [
+						"api",
+						"vendedores",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "usuarios",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{SERVER_ADDRESS}}:{{SERVER_PORT}}/api/usuarios/2",
+					"host": [
+						"{{SERVER_ADDRESS}}"
+					],
+					"port": "{{SERVER_PORT}}",
+					"path": [
+						"api",
+						"usuarios",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "produtos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{SERVER_ADDRESS}}:{{SERVER_PORT}}/api/produtos/2",
+					"host": [
+						"{{SERVER_ADDRESS}}"
+					],
+					"port": "{{SERVER_PORT}}",
+					"path": [
+						"api",
+						"produtos",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
