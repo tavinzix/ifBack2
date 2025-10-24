@@ -13,6 +13,6 @@ Route::get('/user', function (Request $request) {
 
 Route::apiResource('produtos', ProdutoController::class);
 
-Route::apiResource('usuarios', UserController::class);
+Route::apiResource('usuarios', UserController::class)->parameters(['usuarios' => 'usuario']);
 
 Route::apiResource('vendedores', VendedorController::class)->parameters(["vendedores" => 'vendedor']);

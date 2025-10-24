@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nome_completo');
             $table->string('email')->unique();
             $table->string('cpf')->unique();
-            $table->string('senha');
+            $table->string('password');
             $table->string('telefone');
             $table->date('dt_nasc');
             $table->enum('status', ['1', '2', '3'])->default('1')->comment('1 = ativo, 2 = inativo, 3 = banido');

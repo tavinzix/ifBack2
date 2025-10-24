@@ -7,4 +7,21 @@ use Illuminate\Database\Eloquent\Model;
 class Vendedor extends Model
 {
     protected $table = 'vendedores';
+
+    protected $fillable = [
+        'user_id',
+        'nome_loja',
+        'cnpj',
+        'descricao_loja',
+        'email',
+        'telefone',
+        'categoria',
+        'cep',
+        'estado',
+        'cidade',
+        'bairro',
+        'rua',
+        'numero',
+        'img_vendedor',
+    ];
 }

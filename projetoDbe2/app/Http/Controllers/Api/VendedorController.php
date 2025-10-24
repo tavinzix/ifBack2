@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
+use App\Http\Requests\VendedorStoreRequest;
+use App\Http\Requests\VendedorUpdateRequest;
 use App\Http\Resources\VendedorCollection;
 use App\Http\Resources\VendedorResource;
+use App\Http\Resources\VendedorStoredResource;
+use App\Http\Resources\VendedorUpdatedResource;
 use App\Models\Vendedor;
+use Exception;
 use Illuminate\Http\Request;
 
 class VendedorController extends Controller
@@ -21,9 +25,14 @@ class VendedorController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(VendedorStoreRequest $request)
     {
-        //
+        try {
+            $vendedor = Vendedor::create($request->validated());
+            return new VendedorStoredResource($vendedor);
+        } catch (Exception $error) {
+            return $this->errorHandler("Erro ao criar novo vendedor!!", $error, 500);
+        }
     }
 
     /**
@@ -37,9 +46,14 @@ class VendedorController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Vendedor $vendedor)
+    public function update(VendedorUpdateRequest $request, Vendedor $vendedor)
     {
-        //
+        try {
+            $vendedor->update($request->validated());
+            return new VendedorUpdatedResource($vendedor);
+        } catch (Exception $error) {
+            return $this->errorHandler("Erro ao atualizar vendedor", $error, 500);
+        }
     }
 
     /**
@@ -47,6 +61,11 @@ class VendedorController extends Controller
      */
     public function destroy(Vendedor $vendedor)
     {
-        //
+        try {
+            $vendedor->delete();
+            return (new VendedorResource($vendedor))->additional(["message" => "Vendedor removido!!!"]);
+        } catch (Exception $error) {
+            return $this->errorHandler("Erro ao remover vendedor!!", $error, 500);
+        }
     }
 }

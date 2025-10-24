@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Vendedor;
 use App\Models\Vendedores;
 use Illuminate\Http\Request;
 
@@ -9,13 +10,13 @@ class VendedoresController extends Controller
 {
     public function index()
     {
-        $listVendedores = Vendedores::all();
+        $listVendedores = Vendedor::all();
         return view('vendedores.index', ["listVendedores" => $listVendedores]);
     }
 
     public function show($id)
     {
-        $vendedores = Vendedores::find($id);
+        $vendedores = Vendedor::find($id);
         return view('vendedores.dadosvendedor', ["vendedores" => $vendedores]);
     }
 
@@ -26,7 +27,7 @@ class VendedoresController extends Controller
 
     public function store(Request $request)
     {
-        $vendedor = new Vendedores;
+        $vendedor = new Vendedor;
         $vendedor->user_id = $request->user_id;
         $vendedor->nome_loja = $request->nome_loja;
         $vendedor->cnpj = $request->cnpj;
@@ -50,14 +51,14 @@ class VendedoresController extends Controller
 
     public function edit($id)
     {
-        $data = ['vendedor' => Vendedores::find($id)];
+        $data = ['vendedor' => Vendedor::find($id)];
         return view('vendedores.vendedor_edit', $data);
     }
 
     public function update(Request $request, $id)
     {
         $updateVendedor = $request->all();
-        $vendedor = Vendedores::find($id);
+        $vendedor = Vendedor::find($id);
 
         $vendedor->nome_loja = $updateVendedor['nome_loja'];
         $vendedor->descricao_loja = $updateVendedor['descricao_loja'];
@@ -77,13 +78,13 @@ class VendedoresController extends Controller
 
     public function delete($id)
     {
-        return view('vendedores.vendedor_remove', ['vendedor' => Vendedores::find($id)]);
+        return view('vendedores.vendedor_remove', ['vendedor' => Vendedor::find($id)]);
     }
 
     public function remove(Request $request, $id)
     {
         if ($request->has('confirmar')) {
-            if (!Vendedores::destroy($id)) {
+            if (!Vendedor::destroy($id)) {
                 dd("Erro ao deletar o vendedr $id!");
             }
         }

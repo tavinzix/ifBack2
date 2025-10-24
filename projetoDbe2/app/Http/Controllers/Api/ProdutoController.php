@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
+use App\Http\Requests\ProdutoStoreRequest;
+use App\Http\Requests\ProdutoUpdateRequest;
 use App\Http\Resources\ProdutoCollection;
 use App\Http\Resources\ProdutoResource;
+use App\Http\Resources\ProdutoStoredResource;
+use App\Http\Resources\ProdutoUpdatedResource;
 use App\Models\Produto;
-use Illuminate\Http\Request;
+use Exception;
 
 class ProdutoController extends Controller
 {
@@ -21,9 +24,13 @@ class ProdutoController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ProdutoStoreRequest $request)
     {
-        //
+        try {
+            return new ProdutoStoredResource(Produto::create($request->validated()));
+        } catch (Exception $error) {
+           return $this->errorHandler("Erro ao criar novo produto!!", $error, 500);
+        }
     }
 
     /**
@@ -37,9 +44,14 @@ class ProdutoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Produto $produto)
+    public function update(ProdutoUpdateRequest $request, Produto $produto)
     {
-        //
+        try{
+            $produto -> update($request->validated());
+            return new ProdutoUpdatedResource($produto);
+        }catch(Exception $error){
+            return $this->errorHandler("Erro ao atualizar produto", $error, 500);
+        }
     }
 
     /**
@@ -47,6 +59,11 @@ class ProdutoController extends Controller
      */
     public function destroy(Produto $produto)
     {
-        //
+        try{
+            $produto->delete();
+            return (new ProdutoResource($produto)) ->additional(["message" => "Produto removido!!!"]); 
+        }catch(Exception $error){
+            return $this->errorHandler("Erro ao remover produto!!", $error, 500);
+        }
     }
 }
