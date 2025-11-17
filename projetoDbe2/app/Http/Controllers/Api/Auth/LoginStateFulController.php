@@ -15,7 +15,6 @@ class LoginStateFulController extends LoginController
     public function login(LoginRequest $request): JsonResource | JsonResponse
     {
         try {
-            dd("entrou");
             $credentials = $request->validated();
             $user = $this->authenticate($credentials);
             if (!$user)

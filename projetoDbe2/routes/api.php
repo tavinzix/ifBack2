@@ -16,17 +16,19 @@ Route::get('/user', function (Request $request) {
 Route::apiResource('produtos', ProdutoController::class)->middleware('auth:sanctum');
 Route::apiResource('produtos', ProdutoController::class)->only(['index', 'show']);
 
-Route::apiResource('usuarios', UserController::class)->parameters(['usuarios' => 'usuario']);
+Route::apiResource('usuarios', UserController::class)->parameters(['usuarios' => 'usuario'])->middleware('auth:sanctum')->except(['store']);
+Route::apiResource('usuarios', UserController::class)->parameters(['usuarios' => 'usuario'])->only(['store']);
 
 Route::apiResource('vendedores', VendedorController::class)->parameters(["vendedores" => 'vendedor'])->middleware('auth:sanctum');
+Route::apiResource('vendedores', VendedorController::class)->parameters(["vendedores" => 'vendedor'])->only(['index', 'show']);
 
 Route::middleware('web')->prefix('spa')->controller(LoginStateFulController::class)->group(function () {
-    Route::post("/login", [LoginStateFulController::class, 'login']);
-    Route::post("/logout", [LoginStateFulController::class, 'logout']);
+    Route::post("/login", 'login');
+    Route::post("/logout", 'logout')->middleware('auth:sanctum');
 });
 
 Route::prefix('tokens')->controller(LoginTokensController::class)->group(function () {
     Route::post('logout', 'logout')->middleware("auth:sanctum");
-    Route::post('revogarusado', 'revogarUtilizado')->middleware("auth:sanctum");
+    Route::post('revogarusado', 'revogarusado')->middleware("auth:sanctum");
     Route::post('login', 'login');
 });

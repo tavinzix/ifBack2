@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Api\Auth;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
 use Exception;
 use Illuminate\Http\Request;
@@ -24,17 +23,13 @@ class LoginTokensController extends LoginController
 
     public function logout(Request $request): JsonResponse
     {
-        $user = $this->authenticate($request->validated());
-        if (!$user) return response()->json(["message" => "Não autenticado"], 401);
-        $user->tokens()->delete();
-        return response()->json(["message" => "Sessão encerrada"]);
+        $request->user()->tokens()->delete();
+        return response()->json(['message' => 'Sessão encerrada, todos os tokens foram revogados']);
     }
 
-    public function revogarUtilizado(Request $request): JsonResponse
+    public function revogarusado(Request $request): JsonResponse
     {
-        $user = $this->authenticate($request->validated());
-        if (!$user) return response()->json(["message" => "Não autenticado"], 401);
-        $user->currentAccessToken()->delete();
-        return response()->json(["message" => "Sessão encerrada"]);
+       $request->user()->currentAccessToken()->delete();
+       return response()->json(['message' => 'Logout feito com sucesso']);
     }
 }
