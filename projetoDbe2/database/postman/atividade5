@@ -1,0 +1,1033 @@
+{
+	"info": {
+		"_postman_id": "939a867a-5035-4e9e-a881-c306878c141f",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30725909",
+		"_collection_link": "https://planetary-shuttle-9939.postman.co/workspace/dbe2~0dfdf43e-9b08-4885-9b76-ee10e30ad1f1/collection/30725909-939a867a-5035-4e9e-a881-c306878c141f?action=share&source=collection_link&creator=30725909"
+	},
+	"item": [
+		{
+			"name": "produtos",
+			"item": [
+				{
+					"name": "produtos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Bearer",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{SERVER_ADDRESS}}:{{SERVER_PORT}}/api/produtos/",
+							"host": [
+								"{{SERVER_ADDRESS}}"
+							],
+							"port": "{{SERVER_PORT}}",
+							"path": [
+								"api",
+								"produtos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "produtos insert",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "nome",
+									"value": "teste insert api nome",
+									"type": "text"
+								},
+								{
+									"key": "descricao",
+									"value": "teste insert api descricao",
+									"type": "text"
+								},
+								{
+									"key": "categoria_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "marca",
+									"value": "teste insert api marca",
+									"type": "text"
+								},
+								{
+									"key": "atributos",
+									"value": "teste inser api atributos, teste inser api atributos2",
+									"type": "text"
+								},
+								{
+									"key": "peso",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "dimensoes",
+									"value": "teste inser api dimensoes, teste inser api dimensoes2  ",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{SERVER_ADDRESS}}:{{SERVER_PORT}}/api/produtos/",
+							"host": [
+								"{{SERVER_ADDRESS}}"
+							],
+							"port": "{{SERVER_PORT}}",
+							"path": [
+								"api",
+								"produtos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "produtos update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"teste update api nome\",\r\n  \"descricao\": \"teste update api descricao\",\r\n  \"peso\": 50.0,\r\n  \"marca\": \"teste update api marca\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SERVER_ADDRESS}}:{{SERVER_PORT}}/api/produtos/1",
+							"host": [
+								"{{SERVER_ADDRESS}}"
+							],
+							"port": "{{SERVER_PORT}}",
+							"path": [
+								"api",
+								"produtos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "produtos delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{SERVER_ADDRESS}}:{{SERVER_PORT}}/api/produtos/2",
+							"host": [
+								"{{SERVER_ADDRESS}}"
+							],
+							"port": "{{SERVER_PORT}}",
+							"path": [
+								"api",
+								"produtos",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "usuarios",
+			"item": [
+				{
+					"name": "usuarios insert",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "nome_completo",
+									"value": "etste insert",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "aa@a.a",
+									"type": "text"
+								},
+								{
+									"key": "cpf",
+									"value": "11212121312",
+									"type": "text"
+								},
+								{
+									"key": "telefone",
+									"value": "123123123",
+									"type": "text"
+								},
+								{
+									"key": "dt_nasc",
+									"value": "12-10-2001",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{SERVER_ADDRESS}}:{{SERVER_PORT}}/api/usuarios",
+							"host": [
+								"{{SERVER_ADDRESS}}"
+							],
+							"port": "{{SERVER_PORT}}",
+							"path": [
+								"api",
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "usuarios update",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome_completo\": \"teste update\",\r\n  \"email\": \"update2@email.com\",\r\n  \"password\": \"123457\",\r\n  \"telefone\": \"1198888122\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SERVER_ADDRESS}}:{{SERVER_PORT}}/api/usuarios/5",
+							"host": [
+								"{{SERVER_ADDRESS}}"
+							],
+							"port": "{{SERVER_PORT}}",
+							"path": [
+								"api",
+								"usuarios",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "usuarios delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{SERVER_ADDRESS}}:{{SERVER_PORT}}/api/usuarios/2",
+							"host": [
+								"{{SERVER_ADDRESS}}"
+							],
+							"port": "{{SERVER_PORT}}",
+							"path": [
+								"api",
+								"usuarios",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "usuarios",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{SERVER_ADDRESS}}:{{SERVER_PORT}}/api/usuarios/4",
+							"host": [
+								"{{SERVER_ADDRESS}}"
+							],
+							"port": "{{SERVER_PORT}}",
+							"path": [
+								"api",
+								"usuarios",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "vendedores",
+			"item": [
+				{
+					"name": "vendedores insert",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "nome_loja",
+									"value": "teste insert nome",
+									"type": "text"
+								},
+								{
+									"key": "cnpj",
+									"value": "esteinsertcnp",
+									"type": "text"
+								},
+								{
+									"key": "descricao_loja",
+									"value": "teste insert descricao",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "testeemail@a.c",
+									"type": "text"
+								},
+								{
+									"key": "telefone",
+									"value": "5615",
+									"type": "text"
+								},
+								{
+									"key": "categoria",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "cep",
+									"value": "96300000",
+									"type": "text"
+								},
+								{
+									"key": "estado",
+									"value": "am",
+									"type": "text"
+								},
+								{
+									"key": "cidade",
+									"value": "teste insert cidade",
+									"type": "text"
+								},
+								{
+									"key": "bairro",
+									"value": "teste insert bairro",
+									"type": "text"
+								},
+								{
+									"key": "rua",
+									"value": "teste insert rua",
+									"type": "text"
+								},
+								{
+									"key": "numero",
+									"value": "2525",
+									"type": "text"
+								},
+								{
+									"key": "img_vendedor",
+									"value": "teste insertfoto",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{SERVER_ADDRESS}}:{{SERVER_PORT}}/api/vendedores",
+							"host": [
+								"{{SERVER_ADDRESS}}"
+							],
+							"port": "{{SERVER_PORT}}",
+							"path": [
+								"api",
+								"vendedores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "vendedores update",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"user_id\": 12,\r\n  \"nome_loja\": \"teste update\",\r\n  \"cnpj\": \"12345678000199\",\r\n  \"descricao_loja\": \"teste update\",\r\n  \"email\": \"testeupdate@email.com\",\r\n  \"telefone\": \"11999999999\",\r\n  \"categoria\": \"teste update\",\r\n  \"cep\": \"12345678\",\r\n  \"estado\": \"SP\",\r\n  \"cidade\": \"teste update\",\r\n  \"bairro\": \"teste update\",\r\n  \"rua\": \"teste update\",\r\n  \"numero\": \"123\",\r\n  \"img_vendedor\": \"teste_update.jpg\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SERVER_ADDRESS}}:{{SERVER_PORT}}/api/vendedores/14",
+							"host": [
+								"{{SERVER_ADDRESS}}"
+							],
+							"port": "{{SERVER_PORT}}",
+							"path": [
+								"api",
+								"vendedores",
+								"14"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "vendedores delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{SERVER_ADDRESS}}:{{SERVER_PORT}}/api/vendedores/1",
+							"host": [
+								"{{SERVER_ADDRESS}}"
+							],
+							"port": "{{SERVER_PORT}}",
+							"path": [
+								"api",
+								"vendedores",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "vendedores",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{SERVER_ADDRESS}}:{{SERVER_PORT}}/api/vendedores/",
+							"host": [
+								"{{SERVER_ADDRESS}}"
+							],
+							"port": "{{SERVER_PORT}}",
+							"path": [
+								"api",
+								"vendedores",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "spa",
+					"item": [
+						{
+							"name": "login",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.sendRequest(\"http://localhost:8090/sanctum/csrf-cookie\", (err, res) => {\r",
+											"    if (err) {\r",
+											"        console.log(err);\r",
+											"    } else {\r",
+											"        const { headers } = res\r",
+											"        console.log(headers)\r",
+											"        const [xsrf_cookie] = headers.filter(h => h.key == 'Set-Cookie' && h.value.includes('XSRF'))\r",
+											"        console.log(xsrf_cookie)\r",
+											"        console.log(xsrf_cookie?.value)\r",
+											"\r",
+											"        const [xsrf_cookie_options] = xsrf_cookie?.value.split(';');\r",
+											"        const xsrf_token = xsrf_cookie_options.replace('%3D', '').replace('XSRF-TOKEN=', '')\r",
+											"        xsrf_token && pm.collectionVariables.set(\"XSRF-TOKEN\", xsrf_token);\r",
+											"\r",
+											"        xsrf_token && console.log(xsrf_token)\r",
+											"    }\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "X-XSRF-TOKEN",
+										"value": "{{XSRF-TOKEN}}",
+										"type": "text"
+									},
+									{
+										"key": "Referer",
+										"value": "http://{{SERVER_ADDRESS}}:{{SERVER_PORT}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "aa@a.a",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123456",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{SERVER_ADDRESS}}:{{SERVER_PORT}}/api/spa/login",
+									"host": [
+										"{{SERVER_ADDRESS}}"
+									],
+									"port": "{{SERVER_PORT}}",
+									"path": [
+										"api",
+										"spa",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "logout",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.sendRequest(\"http://localhost:8090/sanctum/csrf-cookie\", (err, res) => {\r",
+											"    if (err) {\r",
+											"        console.log(err);\r",
+											"    } else {\r",
+											"        const { headers } = res\r",
+											"        console.log(headers)\r",
+											"        const [xsrf_cookie] = headers.filter(h => h.key == 'Set-Cookie' && h.value.includes('XSRF'))\r",
+											"        console.log(xsrf_cookie)\r",
+											"        console.log(xsrf_cookie?.value)\r",
+											"\r",
+											"        const [xsrf_cookie_options] = xsrf_cookie?.value.split(';');\r",
+											"        const xsrf_token = xsrf_cookie_options.replace('%3D', '').replace('XSRF-TOKEN=', '')\r",
+											"        xsrf_token && pm.collectionVariables.set(\"XSRF-TOKEN\", xsrf_token);\r",
+											"\r",
+											"        xsrf_token && console.log(xsrf_token)\r",
+											"    }\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{XSRF-TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "X-XSRF-TOKEN",
+										"value": "{{XSRF-TOKEN}}",
+										"type": "text"
+									},
+									{
+										"key": "Referer",
+										"value": "http://{{SERVER_ADDRESS}}:{{SERVER_PORT}}",
+										"type": "text"
+									},
+									{
+										"key": "",
+										"value": "",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "aa@a.a",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "password",
+											"value": "123456",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{SERVER_ADDRESS}}:{{SERVER_PORT}}/api/spa/logout",
+									"host": [
+										"{{SERVER_ADDRESS}}"
+									],
+									"port": "{{SERVER_PORT}}",
+									"path": [
+										"api",
+										"spa",
+										"logout"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "token",
+					"item": [
+						{
+							"name": "login",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const {token} = pm.response.json()\r",
+											"token && pm.collectionVariables.set(\"TOKEN\", token)"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "test@example.com",
+											"description": "admin",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "teste",
+											"description": "admin",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "aa@a.a",
+											"description": "comum",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "password",
+											"value": "123456",
+											"description": "comum",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "email",
+											"value": "vendedor@email.com",
+											"description": "vendedor",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "password",
+											"value": "123",
+											"description": "vendedor",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{SERVER_ADDRESS}}:{{SERVER_PORT}}/api/tokens/login",
+									"host": [
+										"{{SERVER_ADDRESS}}"
+									],
+									"port": "{{SERVER_PORT}}",
+									"path": [
+										"api",
+										"tokens",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "logout",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{SERVER_ADDRESS}}:{{SERVER_PORT}}/api/tokens/logout",
+									"host": [
+										"{{SERVER_ADDRESS}}"
+									],
+									"port": "{{SERVER_PORT}}",
+									"path": [
+										"api",
+										"tokens",
+										"logout"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "revogar utilizado",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{SERVER_ADDRESS}}:{{SERVER_PORT}}/api/tokens/revogarusado",
+									"host": [
+										"{{SERVER_ADDRESS}}"
+									],
+									"port": "{{SERVER_PORT}}",
+									"path": [
+										"api",
+										"tokens",
+										"revogarusado"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "X",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "XSRF-TOKEN",
+			"value": ""
+		},
+		{
+			"key": "TOKEN",
+			"value": ""
+		}
+	]
+}
