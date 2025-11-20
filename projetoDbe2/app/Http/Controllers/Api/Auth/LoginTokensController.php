@@ -14,7 +14,14 @@ class LoginTokensController extends LoginController
         try {
             $user = $this->authenticate($request->validated());
             if (!$user) throw new Exception("Dados inválidos");
-            $token = $user->createToken($user->email)->plainTextToken;
+            if ($user->is_admin == true) {
+                $ability = ['is-admin'];
+            } else if ($user->is_vendedor == true) {
+                $ability = ['is-vendedor'];
+            } else {
+                $ability = [];
+            }
+            $token = $user->createToken($request->email, $ability)->plainTextToken;
             return compact('token', 'user');
         } catch (Exception $error) {
             return $this->errorHandler($error->getMessage(), $error, 401);
@@ -29,7 +36,7 @@ class LoginTokensController extends LoginController
 
     public function revogarusado(Request $request): JsonResponse
     {
-       $request->user()->currentAccessToken()->delete();
-       return response()->json(['message' => 'Logout feito com sucesso']);
+        $request->user()->currentAccessToken()->delete();
+        return response()->json(['message' => 'Logout feito com sucesso']);
     }
 }

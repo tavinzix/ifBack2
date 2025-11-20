@@ -13,13 +13,13 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 
-Route::apiResource('produtos', ProdutoController::class)->middleware('auth:sanctum');
+Route::apiResource('produtos', ProdutoController::class)->middleware(['auth:sanctum', 'ability:is-vendedor,is-admin']);
 Route::apiResource('produtos', ProdutoController::class)->only(['index', 'show']);
 
-Route::apiResource('usuarios', UserController::class)->parameters(['usuarios' => 'usuario'])->middleware('auth:sanctum')->except(['store']);
+Route::apiResource('usuarios', UserController::class)->parameters(['usuarios' => 'usuario'])->middleware('auth:sanctum');
 Route::apiResource('usuarios', UserController::class)->parameters(['usuarios' => 'usuario'])->only(['store']);
 
-Route::apiResource('vendedores', VendedorController::class)->parameters(["vendedores" => 'vendedor'])->middleware('auth:sanctum');
+Route::apiResource('vendedores', VendedorController::class)->parameters(["vendedores" => 'vendedor'])->middleware(['auth:sanctum']);
 Route::apiResource('vendedores', VendedorController::class)->parameters(["vendedores" => 'vendedor'])->only(['index', 'show']);
 
 Route::middleware('web')->prefix('spa')->controller(LoginStateFulController::class)->group(function () {

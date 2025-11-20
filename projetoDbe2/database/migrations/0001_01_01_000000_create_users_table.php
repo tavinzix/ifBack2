@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('cpf')->unique();
             $table->string('password');
             $table->string('telefone');
+            $table->boolean('is_admin')->default(false);
+            $table->boolean('is_vendedor')->default(false);
             $table->date('dt_nasc');
             $table->enum('status', ['1', '2', '3'])->default('1')->comment('1 = ativo, 2 = inativo, 3 = banido');
             $table->string('img_user', 250)->default('avatar.jpg');

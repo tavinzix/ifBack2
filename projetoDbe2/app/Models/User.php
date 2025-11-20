@@ -27,6 +27,8 @@ class User extends Authenticatable
         'password',
         'status',
         'img_user',
+        'is_admin',
+        'is_vendedor'
     ];
     /**
      * The attributes that should be hidden for serialization.

@@ -10,13 +10,11 @@ use App\Http\Resources\UsuarioStoredResource;
 use App\Http\Resources\UsuarioUpdatedResource;
 use App\Models\User;
 use Exception;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function index(Request $request)
     {
         return new UserCollection(User::all());
     }
@@ -37,9 +35,15 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(User $usuario)
+    public function show(Request $request, User $usuario)
     {
-        return new UserResource($usuario);
+        if ($request->user()->id == $usuario->id) {
+            return new UserResource($usuario);
+        } else if ($request->user()->is_admin) {
+            return new UserResource($usuario);
+        } else {
+            return ("Acesso negado");
+        }
     }
 
     /**
@@ -48,8 +52,15 @@ class UserController extends Controller
     public function update(UsuarioUpdateRequest $request, User $usuario)
     {
         try {
-            $usuario->update($request->validated());
-            return new UsuarioUpdatedResource($usuario);
+            if ($request->user()->id == $usuario->id) {
+                $usuario->update($request->validated());
+                return new UsuarioUpdatedResource($usuario);
+            } else if ($request->user()->is_admin) {
+                $usuario->update($request->validated());
+                return new UsuarioUpdatedResource($usuario);
+            } else {
+                return ("Acesso negado");
+            }
         } catch (Exception $error) {
             return $this->errorHandler("Erro ao atualizar usuario", $error, 500);
         }
@@ -58,11 +69,18 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(User $usuario)
+    public function destroy(Request $request, User $usuario)
     {
         try {
-            $usuario->delete();
-            return (new UserResource($usuario))->additional(["message" => "Usuario removido!!!"]);
+            if ($request->user()->id == $usuario->id) {
+                $usuario->delete();
+                return (new UserResource($usuario))->additional(["message" => "Usuario removido!!!"]);
+            } else if ($request->user()->is_admin) {
+                $usuario->delete();
+                return (new UserResource($usuario))->additional(["message" => "Usuario removido!!!"]);
+            } else {
+                return ("Acesso negado");
+            }
         } catch (Exception $error) {
             return $this->errorHandler("Erro ao remover usuario!!", $error, 500);
         }

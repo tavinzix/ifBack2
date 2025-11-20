@@ -27,7 +27,12 @@ class VendedorController extends Controller
      */
     public function store(VendedorStoreRequest $request)
     {
+        $statusHttp = 500;
         try {
+            if(!$request->user()->tokenCan('is-admin')){
+                $statusHttp = 403;
+                throw new \Exception('Você não tem permissão!');
+            }
             $vendedor = Vendedor::create($request->validated());
             return new VendedorStoredResource($vendedor);
         } catch (Exception $error) {
