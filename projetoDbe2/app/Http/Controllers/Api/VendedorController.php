@@ -31,7 +31,7 @@ class VendedorController extends Controller
         try {
             if(!$request->user()->tokenCan('is-admin')){
                 $statusHttp = 403;
-                throw new \Exception('Você não tem permissão!');
+                throw new \Exception('Você não tem permissão - Necessario ser adm!');
             }
             $vendedor = Vendedor::create($request->validated());
             return new VendedorStoredResource($vendedor);

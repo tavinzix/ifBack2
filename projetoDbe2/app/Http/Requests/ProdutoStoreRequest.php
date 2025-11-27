@@ -22,12 +22,15 @@ class ProdutoStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'vendedor_id' => 'required|integer',
             'nome' => 'required|string|max:100',
             'descricao' => 'required|string|max:500',
             'categoria_id' => 'nullable|integer',
             'marca' => 'nullable|string|max:50',
             'atributos' => 'nullable|array',
             'peso' => 'nullable|numeric|min:0',
+            'preco' => 'nullable|numeric|min:0',
+            'estoque' => 'nullable|integer',
             'dimensoes' => 'nullable|array',
         ];
     }

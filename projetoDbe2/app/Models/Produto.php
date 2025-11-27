@@ -3,11 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Produto extends Model
 {
-    // Campos que podem ser atribuídos em massa
+    use HasFactory;
     protected $fillable = [
+        'vendedor_id',
         'nome',
         'descricao',
         'categoria_id',
@@ -15,11 +17,17 @@ class Produto extends Model
         'atributos',
         'peso',
         'dimensoes',
+        'preco',
+        'estoque',
     ];
 
-    // Indica que esses campos são JSON no banco
     protected $casts = [
         'atributos' => 'array',
         'dimensoes' => 'array',
     ];
+
+    public function vendedor()
+    {
+        return $this->belongsTo(Vendedor::class);
+    }
 }

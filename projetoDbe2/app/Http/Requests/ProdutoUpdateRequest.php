@@ -29,6 +29,8 @@ class ProdutoUpdateRequest extends FormRequest
             'atributos' => 'nullable|array',
             'peso' => 'nullable|numeric|min:0',
             'dimensoes' => 'nullable|array',
+            'preco' => 'nullable|numeric|min:0',
+            'estoque' => 'nullable|integer',
         ];
     }
 
