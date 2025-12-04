@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Storage;
 
 class ProdutoResource extends JsonResource
 {
@@ -14,6 +15,20 @@ class ProdutoResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        // return parent::toArray($request);
+        return [
+            ...parent::toArray($request),
+            'media' => $this->whenLoaded(
+                'media',
+                fn() => $this->media->map(
+                    function ($media) {
+                        $media->source = $media->type == 'image'
+                            ? asset(Storage::url('produtos/' . $media->source))
+                            : $media->source;
+                        return $media;
+                    }
+                )
+            )
+        ];
     }
 }

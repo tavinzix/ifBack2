@@ -9,6 +9,7 @@ use App\Http\Resources\ProdutoResource;
 use App\Http\Resources\ProdutoStoredResource;
 use App\Http\Resources\ProdutoUpdatedResource;
 use App\Models\Produto;
+use App\Repositories\ProdutoRepository;
 use Exception;
 
 class ProdutoController extends Controller
@@ -27,9 +28,10 @@ class ProdutoController extends Controller
     public function store(ProdutoStoreRequest $request)
     {
         try {
-            return new ProdutoStoredResource(Produto::create($request->validated()));
+            $novoProduto = ProdutoRepository::store($request->validated());
+            return new ProdutoStoredResource($novoProduto);
         } catch (Exception $error) {
-           return $this->errorHandler("Erro ao criar novo produto!!", $error, 500);
+            $this->errorHandler("Erro ao criar Produto!!", $error, 500);
         }
     }
 
@@ -46,10 +48,10 @@ class ProdutoController extends Controller
      */
     public function update(ProdutoUpdateRequest $request, Produto $produto)
     {
-        try{
-            $produto -> update($request->validated());
+        try {
+            $produto->update($request->validated());
             return new ProdutoUpdatedResource($produto);
-        }catch(Exception $error){
+        } catch (Exception $error) {
             return $this->errorHandler("Erro ao atualizar produto", $error, 500);
         }
     }
@@ -59,10 +61,10 @@ class ProdutoController extends Controller
      */
     public function destroy(Produto $produto)
     {
-        try{
+        try {
             $produto->delete();
-            return (new ProdutoResource($produto)) ->additional(["message" => "Produto removido!!!"]); 
-        }catch(Exception $error){
+            return (new ProdutoResource($produto))->additional(["message" => "Produto removido!!!"]);
+        } catch (Exception $error) {
             return $this->errorHandler("Erro ao remover produto!!", $error, 500);
         }
     }
