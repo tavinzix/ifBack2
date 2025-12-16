@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('produtos', function (Blueprint $table) {
             $table->id();
-            $table->integer('vendedor_id');
+            $table->foreignId('vendedor_id')->constrained('vendedores')->cascadeOnDelete();
             $table->string('nome', 255);
             $table->text('descricao');
             $table->integer('categoria_id');
@@ -24,7 +24,7 @@ return new class extends Migration
             $table->decimal('preco', 10, 2);
             $table->integer('estoque');
             $table->timestamps();
-            
+
             $table->foreign('vendedor_id')->references('id')->on('vendedores')->onDelete('cascade');
         });
     }
