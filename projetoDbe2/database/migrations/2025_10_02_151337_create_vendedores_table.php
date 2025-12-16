@@ -31,8 +31,6 @@ return new class extends Migration
             $table->string('img_vendedor')->default('sem_imagem.jpg');
 
             $table->timestamps();
-
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

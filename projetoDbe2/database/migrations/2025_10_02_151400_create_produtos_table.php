@@ -24,8 +24,6 @@ return new class extends Migration
             $table->decimal('preco', 10, 2);
             $table->integer('estoque');
             $table->timestamps();
-
-            $table->foreign('vendedor_id')->references('id')->on('vendedores')->onDelete('cascade');
         });
     }
 
