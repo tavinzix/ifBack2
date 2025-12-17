@@ -13,8 +13,8 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 
-Route::apiResource('produtos', ProdutoController::class)->middleware(['auth:sanctum', 'ability:is-vendedor,is-admin']);
 Route::apiResource('produtos', ProdutoController::class)->only(['index', 'show']);
+Route::apiResource('produtos', ProdutoController::class)->except(['index', 'show'])->middleware(['auth:sanctum', 'ability:is-vendedor,is-admin']);
 
 Route::apiResource('usuarios', UserController::class)->parameters(['usuarios' => 'usuario'])->middleware('auth:sanctum');
 Route::apiResource('usuarios', UserController::class)->parameters(['usuarios' => 'usuario'])->only(['store']);
